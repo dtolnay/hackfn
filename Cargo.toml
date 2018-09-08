@@ -15,3 +15,6 @@ proc-macro = true
 proc-macro2 = "0.4"
 quote = "0.6"
 syn = "0.15"
+
+[package.metadata.docs.rs]
+rustdoc-args = ["--cfg", "docs_rs_workaround"]
