@@ -11,7 +11,7 @@ that method as the implementation of the function call operator.
 
 ```toml
 [dependencies]
-hackfn = { git = "https://github.com/dtolnay/hackfn" }
+hackfn = "0.1"
 ```
 
 ## Limitations
