@@ -14,6 +14,9 @@ that method as the implementation of the function call operator.
 hackfn = "0.1"
 ```
 
+*Version requirement: \#\[hackfn\] will support stable compilers beginning with
+Rust 1.30.0.*
+
 ## Limitations
 
 - The function must receive `&self`. Functions that receive `&mut self` or
