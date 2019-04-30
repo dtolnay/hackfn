@@ -15,7 +15,6 @@
 //! # Examples
 //!
 //! ```
-//! extern crate hackfn;
 //! use hackfn::hackfn;
 //!
 //! /// Function object that adds some number to its input.
@@ -45,7 +44,6 @@
 //! - The function may take any number of arguments.
 //!
 //! ```
-//! extern crate hackfn;
 //! use hackfn::hackfn;
 //!
 //! use std::cell::Cell;
@@ -79,18 +77,13 @@
 #![cfg_attr(docs_rs_workaround, feature(proc_macro))]
 #![recursion_limit = "128"]
 
-#[macro_use]
-extern crate quote;
-#[macro_use]
-extern crate syn;
-
 extern crate proc_macro;
-extern crate proc_macro2;
 
 use proc_macro::TokenStream;
 use proc_macro2::TokenStream as TokenStream2;
+use quote::quote;
 use syn::parse::{Parse, ParseStream, Result};
-use syn::{Attribute, Generics, Ident, Token, Type, Visibility};
+use syn::{braced, parenthesized, parse_macro_input, Attribute, Generics, Ident, Token, Type, Visibility};
 
 struct Nothing;
 

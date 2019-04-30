@@ -29,7 +29,6 @@ Rust 1.30.0.*
 ## Examples
 
 ```rust
-extern crate hackfn;
 use hackfn::hackfn;
 
 /// Function object that adds some number to its input.
@@ -59,7 +58,6 @@ The next example is somewhat more elaborate:
 - The function may take any number of arguments.
 
 ```rust
-extern crate hackfn;
 use hackfn::hackfn;
 
 use std::cell::Cell;
