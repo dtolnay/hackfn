@@ -2,3 +2,6 @@ language: rust
 
 rust:
   - nightly
+  - beta
+  - nightly
+  - 1.31.0
