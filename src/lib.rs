@@ -75,7 +75,6 @@
 //! ```
 
 #![cfg_attr(docs_rs_workaround, feature(proc_macro))]
-#![recursion_limit = "128"]
 
 extern crate proc_macro;
 
