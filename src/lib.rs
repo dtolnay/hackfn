@@ -83,7 +83,9 @@ use proc_macro::TokenStream;
 use proc_macro2::TokenStream as TokenStream2;
 use quote::quote;
 use syn::parse::{Parse, ParseStream, Result};
-use syn::{braced, parenthesized, parse_macro_input, Attribute, Generics, Ident, Token, Type, Visibility};
+use syn::{
+    braced, parenthesized, parse_macro_input, Attribute, Generics, Ident, Token, Type, Visibility,
+};
 
 struct Nothing;
 
@@ -122,7 +124,7 @@ struct HackFn {
 impl Parse for HackFn {
     fn parse(input: ParseStream) -> Result<Self> {
         let impl_attrs = input.call(Attribute::parse_outer)?;
-        input.parse::<Token![impl ]>()?;
+        input.parse::<Token![impl]>()?;
         let mut generics: Generics = input.parse()?;
         let self_ty: Type = input.parse()?;
         generics.where_clause = input.parse()?;
