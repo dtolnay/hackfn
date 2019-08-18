@@ -190,24 +190,20 @@ pub fn hackfn(args: TokenStream, input: TokenStream) -> TokenStream {
     } = parse_macro_input!(input as HackFn);
 
     let impl_attrs = &impl_attrs;
-    let ret_ty = &ret_ty;
     let where_clause = &generics.where_clause;
-    let arg_names = args.iter().map(|fn_arg| &fn_arg.ident);
-    let arg_types = args.iter().map(|fn_arg| &fn_arg.ty);
-    let arg_names2 = arg_names.clone();
-    let arg_names3 = arg_names.clone();
-    let arg_types2 = arg_types.clone();
-    let arg_types3 = arg_types.clone();
+    let arg_names = args.iter().map(|fn_arg| &fn_arg.ident).collect::<Vec<_>>();
+    let arg_types = args.iter().map(|fn_arg| &fn_arg.ty).collect::<Vec<_>>();
+    let ret_ty = ret_ty.map(|ret| quote!(-> #ret));
 
     let target = quote! {
-        ::std::ops::Fn(#(#arg_types2),*) #(-> #ret_ty)*
+        ::std::ops::Fn(#(#arg_types),*) #ret_ty
     };
 
     let expanded = quote! {
         #(#impl_attrs)*
         impl #generics #self_ty #where_clause {
             #(#fn_attrs)*
-            #vis fn #method(&self #(, #arg_names: #arg_types)*) #(-> #ret_ty)* {
+            #vis fn #method(&self #(, #arg_names: #arg_types)*) #ret_ty {
                 #body
             }
         }
@@ -220,8 +216,8 @@ pub fn hackfn(args: TokenStream, input: TokenStream) -> TokenStream {
             // by move has the same layout as T.
             fn deref(&self) -> &Self::Target {
                 let __this: Self = unsafe { ::std::mem::uninitialized() };
-                let __closure = move |#(#arg_names2 : #arg_types3),*| #(-> #ret_ty)* {
-                    Self::#method(&__this #(, #arg_names3)*)
+                let __closure = move |#(#arg_names : #arg_types),*| #ret_ty {
+                    Self::#method(&__this #(, #arg_names)*)
                 };
                 let __size_of_closure = ::std::mem::size_of_val(&__closure);
                 fn __second<'__a, __T>(__first: &__T, __second: &'__a __T) -> &'__a __T {
