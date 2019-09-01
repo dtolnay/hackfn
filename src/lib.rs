@@ -216,9 +216,12 @@ pub fn hackfn(args: TokenStream, input: TokenStream) -> TokenStream {
             // This implementation assumes that a closure that captures a type T
             // by move has the same layout as T.
             fn deref(&self) -> &Self::Target {
-                let __this: Self = unsafe { ::std::mem::uninitialized() };
+                let __this = ::std::mem::MaybeUninit::<Self>::uninit();
                 let __closure = move |#(#arg_names : #arg_types),*| #ret_ty {
-                    Self::#method(&__this #(, #arg_names)*)
+                    Self::#method(
+                        unsafe { &*__this.as_ptr() }
+                        #(, #arg_names)*
+                    )
                 };
                 let __size_of_closure = ::std::mem::size_of_val(&__closure);
                 fn __second<'__a, __T>(__first: &__T, __second: &'__a __T) -> &'__a __T {
