@@ -83,6 +83,7 @@
 //! ```
 
 #![cfg_attr(docs_rs_workaround, feature(proc_macro))]
+#![allow(clippy::needless_doctest_main)]
 
 extern crate proc_macro;
 
