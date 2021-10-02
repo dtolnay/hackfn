@@ -3,6 +3,7 @@ name = "hackfn"
 version = "0.1.4"
 authors = ["David Tolnay <dtolnay@gmail.com>"]
 edition = "2018"
+rust-version = "1.36"
 license = "MIT OR Apache-2.0"
 description = "Fake implementation of `std::ops::Fn` for user-defined data types."
 repository = "https://github.com/dtolnay/hackfn"
