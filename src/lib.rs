@@ -236,7 +236,7 @@ pub fn hackfn(args: TokenStream, input: TokenStream) -> TokenStream {
                 fn __second<'__a, __T>(__first: &__T, __second: &'__a __T) -> &'__a __T {
                     __second
                 }
-                let __ret = __second(&__closure, unsafe { ::std::mem::transmute(self) });
+                let __ret = __second(&__closure, unsafe { &*(self as *const Self as *const _) });
                 ::std::mem::forget(__closure);
                 assert_eq!(__size_of_closure, ::std::mem::size_of::<Self>());
                 unsafe { ::std::mem::transmute(__ret as &#target) }
