@@ -206,7 +206,7 @@ pub fn hackfn(args: TokenStream, input: TokenStream) -> TokenStream {
     let ret_ty = ret_ty.map(|ret| quote!(-> #ret));
 
     let target = quote! {
-        ::std::ops::Fn(#(#arg_types),*) #ret_ty
+        dyn ::std::ops::Fn(#(#arg_types),*) #ret_ty
     };
 
     let expanded = quote! {
