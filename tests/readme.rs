@@ -42,7 +42,7 @@ mod second {
 
     #[test]
     fn main() {
-        let accumulate = AccumulatePairs::default();
+        let accumulate = AccumulatePairs::<i32>::default();
         accumulate(30, 1);
         accumulate(20, 2);
         accumulate(10, 3);
