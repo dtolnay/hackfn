@@ -233,15 +233,13 @@ pub fn hackfn(args: TokenStream, input: TokenStream) -> TokenStream {
                         #(, #arg_names)*
                     )
                 };
-                let __size_of_closure = ::std::mem::size_of_val(&__closure);
-                let __align_of_closure = ::std::mem::align_of_val(&__closure);
+                let __layout_of_closure = ::std::alloc::Layout::for_value(&__closure);
                 fn __second<'__a, __T>(__first: &__T, __second: &'__a __T) -> &'__a __T {
                     __second
                 }
                 let __ret = __second(&__closure, unsafe { &*(self as *const Self as *const _) });
                 ::std::mem::forget(__closure);
-                assert_eq!(__size_of_closure, ::std::mem::size_of::<Self>());
-                assert_eq!(__align_of_closure, ::std::mem::align_of::<Self>());
+                assert_eq!(__layout_of_closure, ::std::alloc::Layout::new::<Self>());
                 unsafe { ::std::mem::transmute(__ret as &#target) }
             }
         }
