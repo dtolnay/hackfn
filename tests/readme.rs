@@ -33,7 +33,10 @@ mod second {
     }
 
     #[hackfn]
-    impl<T> AccumulatePairs<T> where T: Copy + Add<Output = T> {
+    impl<T> AccumulatePairs<T>
+    where
+        T: Copy + Add<Output = T>,
+    {
         fn call(&self, first: T, second: T) {
             self.first.set(self.first.get() + first);
             self.second.set(self.second.get() + second);
