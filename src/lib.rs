@@ -90,18 +90,10 @@ extern crate proc_macro;
 use proc_macro::TokenStream;
 use proc_macro2::TokenStream as TokenStream2;
 use quote::quote;
-use syn::parse::{Parse, ParseStream, Result};
+use syn::parse::{Nothing, Parse, ParseStream, Result};
 use syn::{
     braced, parenthesized, parse_macro_input, Attribute, Generics, Ident, Token, Type, Visibility,
 };
-
-struct Nothing;
-
-impl Parse for Nothing {
-    fn parse(_input: ParseStream) -> Result<Self> {
-        Ok(Nothing)
-    }
-}
 
 struct FnArg {
     ident: Ident,
