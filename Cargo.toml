@@ -6,7 +6,6 @@ description = "Fake implementation of `std::ops::Fn` for user-defined data types
 documentation = "https://docs.rs/hackfn"
 edition = "2018"
 license = "MIT OR Apache-2.0"
-readme = "README.md"
 repository = "https://github.com/dtolnay/hackfn"
 rust-version = "1.36"
 
