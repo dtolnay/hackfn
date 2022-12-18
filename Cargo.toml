@@ -2,13 +2,13 @@
 name = "hackfn"
 version = "0.1.7"
 authors = ["David Tolnay <dtolnay@gmail.com>"]
-edition = "2018"
-rust-version = "1.36"
-license = "MIT OR Apache-2.0"
 description = "Fake implementation of `std::ops::Fn` for user-defined data types."
-repository = "https://github.com/dtolnay/hackfn"
 documentation = "https://docs.rs/hackfn"
+edition = "2018"
+license = "MIT OR Apache-2.0"
 readme = "README.md"
+repository = "https://github.com/dtolnay/hackfn"
+rust-version = "1.36"
 
 [lib]
 proc-macro = true
